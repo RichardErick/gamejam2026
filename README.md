@@ -1,5 +1,7 @@
 # Compartir la Mesa — Outgrow Hunger (GGJ)
 
+Repositorio: [github.com/RichardErick/gamejam2026](https://github.com/RichardErick/gamejam2026)
+
 Juego creado para la Global Game Jam con **tema Outgrow Hunger** y **diversificador Cross-platform**.
 
 ## Tema y diversificador

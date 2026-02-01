@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#0a1612">
+  <title>Compartir la Mesa — Outgrow Hunger</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1>Compartir la Mesa</h1>
+      <p class="tagline">Outgrow Hunger · Cross-platform GGJ</p>
+    </header>
+    <main>
+      <!-- Menú principal -->
+      <section id="main-menu" class="screen active" aria-label="Menú principal">
+        <div class="menu-content">
+          <div class="menu-logo" aria-hidden="true"></div>
+          <h2 class="menu-title">Compartir la Mesa</h2>
+          <p class="menu-subtitle">Lleva alimentos a las comunidades. Cada decisión cuenta.</p>
+          <div class="menu-about" id="menu-about">
+            <p><strong>¿De qué trata?</strong> Gestionas una cadena de suministro de alimentos: las <em>granjas</em> (verde) producen comida y las <em>comunidades</em> (naranja) la necesitan. Toca una granja y luego una comunidad para enviar un envío. Lleva la comida a tiempo y con poco desperdicio para conseguir más estrellas. Tus decisiones tienen impacto real.</p>
+          </div>
+          <button id="btn-play" type="button" class="btn-primary">
+            <span class="btn-icon">▶</span> Jugar
+          </button>
+          <div class="menu-options">
+            <button id="btn-sound-toggle" type="button" class="btn-icon-only" aria-label="Activar o desactivar sonido" title="Sonido">
+              <span class="icon-sound-on">🔊</span>
+              <span class="icon-sound-off">🔇</span>
+            </button>
+          </div>
+        </div>
+        <div class="menu-bg-pattern" aria-hidden="true"></div>
+      </section>
+
+      <div id="game-container" class="screen">
+        <canvas id="game" width="800" height="520" aria-label="Área de juego"></canvas>
+
+        <!-- Tarjeta intro nivel -->
+        <div id="level-intro" class="overlay center level-intro-card" aria-live="polite" hidden>
+          <div class="level-intro-content">
+            <span id="level-intro-title">Nivel 1</span>
+            <span id="level-intro-subtitle">Distribuye la comida</span>
+          </div>
+        </div>
+
+        <!-- Countdown 3-2-1-Go -->
+        <div id="countdown-overlay" class="overlay center" aria-live="polite">
+          <span id="countdown-number">3</span>
+        </div>
+
+        <!-- Hint tutorial (primera vez) -->
+        <div id="tutorial-hint" class="tutorial-hint" role="status" hidden>
+          <span class="tutorial-hint-text">Toca una granja → luego una comunidad</span>
+        </div>
+
+        <div id="ui-overlay">
+          <div id="hud" role="status" aria-live="polite">
+            <div class="hud-level" aria-label="Nivel actual">
+              <span class="hud-label">Nivel</span>
+              <span id="level-number" class="hud-value">1</span>
+            </div>
+            <div class="hud-timer-wrap" aria-label="Tiempo restante">
+              <div class="timer-bar-bg">
+                <div id="timer-bar" class="timer-bar-fill"></div>
+              </div>
+              <span id="timer" class="hud-value timer-num">60</span>
+            </div>
+            <div class="hud-item en-route" aria-label="Envíos en camino">
+              <span class="hud-icon" aria-hidden="true">🚚</span>
+              <span id="en-route-count" class="hud-value">0</span>
+            </div>
+            <div class="hud-item waste" aria-label="Comida desperdiciada">
+              <span class="hud-icon" aria-hidden="true">🗑</span>
+              <span id="waste" class="hud-value">0</span>
+            </div>
+          </div>
+
+          <div id="message-box" role="alert" aria-live="assertive"></div>
+          <div id="result-panel" class="overlay center" aria-live="polite" hidden>
+            <div class="result-card">
+              <h3 id="result-title">¡Nivel completado!</h3>
+              <div id="result-stars" class="stars" aria-label="Estrellas conseguidas">
+                <span class="star" data-star="1">★</span>
+                <span class="star" data-star="2">★</span>
+                <span class="star" data-star="3">★</span>
+              </div>
+              <p id="result-stats" class="result-stats"></p>
+              <p id="result-best" class="result-best" hidden></p>
+              <div class="result-buttons">
+                <button id="btn-retry" type="button" class="btn-secondary">Reintentar</button>
+                <button id="btn-next" type="button" class="btn-primary">Siguiente nivel</button>
+              </div>
+            </div>
+          </div>
+          <button id="btn-restart" type="button" class="btn-floating">Reintentar</button>
+        </div>
+      </div>
+
+      <section id="instructions" aria-label="Instrucciones" class="collapsible">
+        <button type="button" id="instructions-toggle" aria-expanded="false" aria-controls="instructions-content">
+          <span>¿Cómo se juega?</span>
+          <span class="chevron">▼</span>
+        </button>
+        <div id="instructions-content" hidden>
+          <p><strong>Objetivo:</strong> Lleva alimentos de las fuentes (izq.) a las comunidades (der.) antes de que se echen a perder.</p>
+          <p><strong>Controles:</strong> Toca o haz clic en una <em>fuente</em> (verde) y luego en una <em>comunidad</em> (naranja) para enviar un envío.</p>
+          <p><strong>Estrellas:</strong> Menos desperdicio y más tiempo restante = más estrellas.</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>GGJ · Outgrow Hunger · Web PC + Móvil</p>
+    </footer>
+  </div>
+  <script src="js/game.js"></script>
+</body>
+</html>
